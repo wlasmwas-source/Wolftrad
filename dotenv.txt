@@ -1,0 +1,12 @@
+import { Telegraf } from 'telegraf';
+import dotenv from 'dotenv';
+
+dotenv.config(); // تحميل القيم من ملف .env
+
+const bot = new Telegraf(process.env.BOT_TOKEN);
+
+bot.start((ctx) => ctx.reply(`أهلاً ${ctx.from.first_name}! البوت جاهز 🚀`));
+bot.help((ctx) => ctx.reply('الأوامر المتاحة:\n/start - بدء\n/help - مساعدة'));
+bot.on('text', (ctx) => ctx.reply(`استقبلت: ${ctx.message.text}`));
+
+bot.launch(); 
